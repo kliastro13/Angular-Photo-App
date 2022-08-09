@@ -6,17 +6,18 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    LoginComponent
-  ],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     NzFormModule,
     NzButtonModule,
     NzInputModule,
     NzCheckboxModule,
+    ReactiveFormsModule,
   ],
+  exports: [LoginComponent],
 })
 export class AccountModule {}
