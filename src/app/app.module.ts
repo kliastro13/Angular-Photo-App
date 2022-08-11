@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 
 import { AccountModule } from './components/account/account.module';
+
 registerLocaleData(uk);
 
 @NgModule({
