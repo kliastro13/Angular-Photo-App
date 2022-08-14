@@ -21,15 +21,15 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm(): void {
-    if (this.loginForm.valid) {
-      console.log('submit', this.loginForm.value);
-    } else {
+    if (!this.loginForm.valid) {
       Object.values(this.loginForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
         }
       });
+      return;
     }
+    console.log('submit', this.loginForm.value);
   }
 }
