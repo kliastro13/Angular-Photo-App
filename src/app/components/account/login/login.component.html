@@ -1,7 +1,7 @@
 <form
   nz-form
   [formGroup]="loginForm"
-  class="login-form"
+  class="max-w-full w-96"
   (ngSubmit)="submitForm()"
 >
   <nz-form-item>
@@ -28,30 +28,20 @@
       </nz-input-group>
     </nz-form-control>
   </nz-form-item>
-  <div nz-row class="login-form-margin">
+  <div nz-row class="mb-4">
     <div nz-col [nzSpan]="12">
       <label nz-checkbox formControlName="remember">
         <span>Remember me</span>
       </label>
     </div>
     <div nz-col [nzSpan]="12">
-      <a class="login-form-forgot">Forgot password</a>
+      <a class="float-right">Forgot password</a>
     </div>
   </div>
   <div class="flex justify-between items-center">
-    <button
-      nz-button
-      class="login-form-button login-form-margin"
-      [nzType]="'primary'"
-    >
-      Log in
-    </button>
+    <button nz-button class="w-5/12 mb-4" [nzType]="'primary'">Log in</button>
     <p>Or</p>
-    <button
-      nz-button
-      class="login-form-button login-form-margin"
-      [nzType]="'default'"
-    >
+    <button nz-button class="w-5/12 mb-4" [nzType]="'default'">
       Register now!
     </button>
   </div>
