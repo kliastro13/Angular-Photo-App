@@ -8,13 +8,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.less'],
 })
 export class LoginComponent implements OnInit {
-  validateForm!: FormGroup;
+  loginForm!: FormGroup;
 
   submitForm(): void {
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
+    if (this.loginForm.valid) {
+      console.log('submit', this.loginForm.value);
     } else {
-      Object.values(this.validateForm.controls).forEach((control) => {
+      Object.values(this.loginForm.controls).forEach((control) => {
         if (control.invalid) {
           control.markAsDirty();
           control.updateValueAndValidity({ onlySelf: true });
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
+    this.loginForm = this.fb.group({
       userName: [null, [Validators.required]],
       password: [null, [Validators.required]],
       remember: [true],
