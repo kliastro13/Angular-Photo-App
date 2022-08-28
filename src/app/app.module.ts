@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 
+import { AccountModule } from './components/account/account.module';
+
 registerLocaleData(uk);
 
 @NgModule({
@@ -24,6 +26,7 @@ registerLocaleData(uk);
     BrowserAnimationsModule,
     IconsProviderModule,
     ReactiveFormsModule,
+    AccountModule,
   ],
   providers: [{ provide: NZ_I18N, useValue: uk_UA }],
   bootstrap: [AppComponent],
