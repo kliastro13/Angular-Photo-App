@@ -41,7 +41,12 @@
   <div class="flex justify-between items-center">
     <button nz-button class="w-5/12 mb-4" [nzType]="'primary'">Log in</button>
     <p>Or</p>
-    <button nz-button class="w-5/12 mb-4" [nzType]="'default'">
+    <button
+      nz-button
+      routerLink="/sign-up"
+      class="w-5/12 mb-4"
+      [nzType]="'default'"
+    >
       Register now!
     </button>
   </div>
