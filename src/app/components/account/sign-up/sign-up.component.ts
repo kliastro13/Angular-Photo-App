@@ -67,10 +67,7 @@ export class SignUpComponent implements OnInit {
       email: ['', [Validators.email, Validators.required]],
       password: ['', [Validators.required]],
       confirm: ['', [this.confirmValidator]],
-      comment: ['', [Validators.required]],
     });
   }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngOnInit(): void {}
 }

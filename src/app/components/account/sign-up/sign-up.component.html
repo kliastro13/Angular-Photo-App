@@ -1,4 +1,9 @@
-<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
+<form
+  nz-form
+  [formGroup]="validateForm"
+  class="max-w-xl mx-auto"
+  (ngSubmit)="submitForm()"
+>
   <nz-form-item>
     <nz-form-label [nzSpan]="7" nzRequired>Username</nz-form-label>
     <nz-form-control
@@ -77,17 +82,6 @@
           >Password is inconsistent!</ng-container
         >
       </ng-template>
-    </nz-form-control>
-  </nz-form-item>
-  <nz-form-item>
-    <nz-form-label [nzSpan]="7" nzRequired>Comment</nz-form-label>
-    <nz-form-control [nzSpan]="12" nzErrorTip="Please write something here!">
-      <textarea
-        formControlName="comment"
-        nz-input
-        rows="2"
-        placeholder="write any thing"
-      ></textarea>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>

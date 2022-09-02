@@ -39,5 +39,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       return;
     }
     console.log('submit', this.loginForm.value);
+    this.ngOnDestroy();
   }
 }
