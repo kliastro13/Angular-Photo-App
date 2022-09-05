@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import {
   FormBuilder,
@@ -14,7 +14,7 @@ import { Observable, Observer } from 'rxjs';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.less'],
 })
-export class SignUpComponent implements OnInit {
+export class SignUpComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup;
 
   constructor(private fb: FormBuilder) {
@@ -28,8 +28,18 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  ngOnDestroy(): void {
+    this.signUpForm = this.fb.group({
+      userName: ['', [Validators.required], [this.userNameAsyncValidator]],
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', [Validators.required]],
+      confirm: ['', [this.confirmValidator]],
+    });
+  }
+
   submitForm(): void {
     console.log('submit', this.signUpForm.value);
+    this.ngOnDestroy();
   }
 
   resetForm(e: MouseEvent): void {
