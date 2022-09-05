@@ -86,11 +86,18 @@
       </nz-form-control>
     </nz-form-item>
     <nz-form-item>
-      <nz-form-control [nzOffset]="7" [nzSpan]="12">
-        <button nz-button nzType="primary" [disabled]="!signUpForm.valid">
-          Register
-        </button>
-        <button nz-button (click)="resetForm($event)">Reset</button>
+      <nz-form-control
+        class="flex justify-between"
+        [nzOffset]="7"
+        [nzSpan]="12"
+      >
+        <div class="flex justify-between">
+          <button nz-button nzType="primary" [disabled]="!signUpForm.valid">
+            Register
+          </button>
+          <button nz-button (click)="resetForm($event)">Reset</button>
+          <button nz-button (click)="goBack()">Go back</button>
+        </div>
       </nz-form-control>
     </nz-form-item>
   </form>

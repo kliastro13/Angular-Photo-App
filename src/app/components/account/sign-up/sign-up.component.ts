@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Observable, Observer } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-sign-up',
@@ -17,7 +18,7 @@ import { Observable, Observer } from 'rxjs';
 export class SignUpComponent implements OnInit, OnDestroy {
   signUpForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private location: Location) {
     this.signUpForm = this.fb.group({
       userName: ['', [Validators.required], [this.userNameAsyncValidator]],
       email: ['', [Validators.email, Validators.required]],
@@ -82,4 +83,8 @@ export class SignUpComponent implements OnInit, OnDestroy {
     }
     return {};
   };
+
+  goBack(): void {
+    this.location.back();
+  }
 }
