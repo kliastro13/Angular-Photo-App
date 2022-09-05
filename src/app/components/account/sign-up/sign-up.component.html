@@ -1,7 +1,7 @@
 <div class="w-screen flex justify-around items-center">
   <form
     nz-form
-    [formGroup]="validateForm"
+    [formGroup]="signUpForm"
     class="max-w-xl w-4/5"
     (ngSubmit)="submitForm()"
   >
@@ -87,8 +87,8 @@
     </nz-form-item>
     <nz-form-item>
       <nz-form-control [nzOffset]="7" [nzSpan]="12">
-        <button nz-button nzType="primary" [disabled]="!validateForm.valid">
-          Submit
+        <button nz-button nzType="primary" [disabled]="!signUpForm.valid">
+          Register
         </button>
         <button nz-button (click)="resetForm($event)">Reset</button>
       </nz-form-control>
