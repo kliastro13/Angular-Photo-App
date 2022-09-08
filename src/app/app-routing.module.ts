@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './guards/auth/auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/welcome' },
@@ -9,6 +10,7 @@ const routes: Routes = [
       import('./components/welcome/welcome.module').then(
         (m) => m.WelcomeModule
       ),
+    canActivate: [AuthGuard],
   },
 ];
 
