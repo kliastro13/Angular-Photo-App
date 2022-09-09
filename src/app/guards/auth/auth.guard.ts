@@ -6,6 +6,7 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 import { UserService } from 'src/app/services/userService/user.service';
 
@@ -13,7 +14,7 @@ import { UserService } from 'src/app/services/userService/user.service';
   providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -23,6 +24,10 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     console.log('Guard working!');
-    return this.userService.isLoggedIn();
+    if (this.userService.isLoggedIn()) {
+      return true;
+    }
+    this.router.navigate(['/login']);
+    return false;
   }
 }
