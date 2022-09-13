@@ -9,11 +9,12 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 import { UserService } from 'src/app/services/userService/user.service';
+import { homepage } from 'src/app/data/const';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
+export class LoggedInGuard implements CanActivate {
   constructor(private userService: UserService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -23,12 +24,12 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    console.log('Auth Guard working!');
+    console.log('LoggedIn Guard working!');
 
-    if (this.userService.isLoggedIn()) {
+    if (!this.userService.isLoggedIn()) {
       return true;
     }
-    this.router.navigate(['/login']);
+    this.router.navigate([homepage]);
     return false;
   }
 }
