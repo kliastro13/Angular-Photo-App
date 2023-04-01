@@ -16,12 +16,13 @@ import { AccountModule } from './components/account/account.module';
 
 import { AuthModule } from '@auth0/auth0-angular';
 
+
 registerLocaleData(uk);
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
