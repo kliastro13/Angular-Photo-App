@@ -14,12 +14,15 @@ import { IconsProviderModule } from './icons-provider.module';
 
 import { AccountModule } from './components/account/account.module';
 
+import { AuthModule } from '@auth0/auth0-angular';
+
+
 registerLocaleData(uk);
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserModule,    
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
@@ -27,6 +30,13 @@ registerLocaleData(uk);
     IconsProviderModule,
     ReactiveFormsModule,
     AccountModule,
+    AuthModule.forRoot({
+      domain: 'dev-angular-photo-app.eu.auth0.com',
+      clientId: 'OMqDrzY1bpDovT6zgEgSScgiiRnfoo57',
+      authorizationParams: {
+        redirect_uri: window.location.origin
+      }
+    }),
   ],
   providers: [{ provide: NZ_I18N, useValue: uk_UA }],
   bootstrap: [AppComponent],

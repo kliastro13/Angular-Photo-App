@@ -9,9 +9,12 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { AccountRoutingModule } from './account-routing.module';
+import { AuthButtonComponent } from './login/authButtonComponent/authButton.component';
+import { UserProfileComponent } from './login/profile/profile.component';
+
 
 @NgModule({
-  declarations: [LoginComponent, SignUpComponent],
+  declarations: [LoginComponent, SignUpComponent, AuthButtonComponent, UserProfileComponent],
   imports: [
     CommonModule,
     NzFormModule,
@@ -21,6 +24,6 @@ import { AccountRoutingModule } from './account-routing.module';
     ReactiveFormsModule,
     AccountRoutingModule,
   ],
-  exports: [LoginComponent, SignUpComponent],
+  exports: [LoginComponent, SignUpComponent, AuthButtonComponent, UserProfileComponent],
 })
 export class AccountModule {}
