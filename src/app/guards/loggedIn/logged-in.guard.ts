@@ -1,51 +1,32 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  CanActivate,  
-  Route,
-  UrlSegment,
-  CanActivateChild,
-} from '@angular/router';
-import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { CanActivate } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
 
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { homepage } from 'src/app/data/const';
-import { AuthService } from '@auth0/auth0-angular';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoggedInGuard implements CanActivate {
-  constructor( private router: Router, private auth: AuthService) {}
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>{
+export class LoggedInGuard implements CanActivate {  
+  constructor(private auth: AuthService, private router: Router) {}
+  canActivate(): Observable<boolean>{
     console.log('LoggedIn Guard working!');
-    return this.redirectIfUnauthenticated(state);
+    return this.isNotAuthenticated();    
   }
 
-  canActivateChild(
-    childRoute: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
-    return this.redirectIfUnauthenticated(state);
-  }
-
-  private redirectIfUnauthenticated(
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
+  private isNotAuthenticated(): Observable<boolean> {
     return this.auth.isAuthenticated$.pipe(
-      tap((loggedIn) => {
-        if (loggedIn) {
-          this.auth.loginWithRedirect({
-            appState: { target: homepage },
-          });
+      map(v => {
+        if(v){
+          this.router.navigate([homepage]); 
         }
+        return v ? false : true;
       })
     );
   }
-
-
 }
 
 /* if (!this.userService.isLoggedIn()) {

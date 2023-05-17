@@ -11,6 +11,7 @@ import {
 import { Observable } from 'rxjs';
 import { tap, take } from 'rxjs/operators';
 import { AuthService } from '@auth0/auth0-angular';
+import { homepage } from 'src/app/data/const';
 
 @Injectable({
   providedIn: 'root',
@@ -26,24 +27,23 @@ export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    return this.redirectIfUnauthenticated(state);
+    return this.redirectIfUnauthenticated();
   }
 
   canActivateChild(
     childRoute: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    return this.redirectIfUnauthenticated(state);
+    return this.redirectIfUnauthenticated();
   }
 
   private redirectIfUnauthenticated(
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
+      ): Observable<boolean> {
     return this.auth.isAuthenticated$.pipe(
       tap((loggedIn) => {
         if (!loggedIn) {
           this.auth.loginWithRedirect({
-            appState: { target: state.url },
+            appState: { target: homepage },
           });
         }
       })
