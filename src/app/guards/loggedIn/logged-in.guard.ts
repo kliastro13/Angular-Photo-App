@@ -29,18 +29,6 @@ export class LoggedInGuard implements CanActivate {
   }
 }
 
-/* if (!this.userService.isLoggedIn()) {
-  return true;
-}
-this.router.navigate([homepage]);
-return false; */
-
-
-/* 
-  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
-    return this.auth.isAuthenticated$.pipe(take(1));
-  } */
-
 
 
 

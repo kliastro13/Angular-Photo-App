@@ -43,7 +43,7 @@ export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
       tap((loggedIn) => {
         if (!loggedIn) {
           this.auth.loginWithRedirect({
-            appState: { target: homepage },
+            appState: { target: '/welcome' },
           });
         }
       })
