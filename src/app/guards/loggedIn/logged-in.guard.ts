@@ -1,35 +1,37 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate } from '@angular/router';
+import { AuthService } from '@auth0/auth0-angular';
 import { Router } from '@angular/router';
 
-import { UserService } from 'src/app/services/userService/user.service';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { homepage } from 'src/app/data/const';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoggedInGuard implements CanActivate {
-  constructor(private userService: UserService, private router: Router) {}
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
+export class LoggedInGuard implements CanActivate {  
+  constructor(private auth: AuthService, private router: Router) {}
+  canActivate(): Observable<boolean>{
     console.log('LoggedIn Guard working!');
+    return this.isNotAuthenticated();    
+  }
 
-    if (!this.userService.isLoggedIn()) {
-      return true;
-    }
-    this.router.navigate([homepage]);
-    return false;
+  private isNotAuthenticated(): Observable<boolean> {
+    return this.auth.isAuthenticated$.pipe(
+      map(v => {
+        if(v){
+          this.router.navigate([homepage]); 
+        }
+        return v ? false : true;
+      })
+    );
   }
 }
+
+
+
+
+
+
+

@@ -9,3 +9,4 @@ export class AppComponent {
   isCollapsed = false;
   title = 'angular photo app';
 }
+

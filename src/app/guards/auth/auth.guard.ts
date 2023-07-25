@@ -1,34 +1,52 @@
 import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
-  CanActivate,
   RouterStateSnapshot,
-  UrlTree,
+  CanActivate,
+  CanLoad,
+  Route,
+  UrlSegment,
+  CanActivateChild,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
-
-import { UserService } from 'src/app/services/userService/user.service';
+import { tap, take } from 'rxjs/operators';
+import { AuthService } from '@auth0/auth0-angular';
+import { homepage } from 'src/app/data/const';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
-  constructor(private userService: UserService, private router: Router) {}
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ):
-    | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree>
-    | boolean
-    | UrlTree {
-    console.log('Auth Guard working!');
+export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
+  constructor(private auth: AuthService) {}
 
-    if (this.userService.isLoggedIn()) {
-      return true;
-    }
-    this.router.navigate(['/login']);
-    return false;
+  canLoad(route: Route, segments: UrlSegment[]): Observable<boolean> {
+    return this.auth.isAuthenticated$.pipe(take(1));
+  }
+
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> {
+    return this.redirectIfUnauthenticated();
+  }
+
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): Observable<boolean> {
+    return this.redirectIfUnauthenticated();
+  }
+
+  private redirectIfUnauthenticated(
+      ): Observable<boolean> {
+    return this.auth.isAuthenticated$.pipe(
+      tap((loggedIn) => {
+        if (!loggedIn) {
+          this.auth.loginWithRedirect({
+            appState: { target: '/welcome' },
+          });
+        }
+      })
+    );
   }
 }
