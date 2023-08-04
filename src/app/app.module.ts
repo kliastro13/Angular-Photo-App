@@ -15,12 +15,13 @@ import { IconsProviderModule } from './icons-provider.module';
 import { AccountModule } from './components/account/account.module';
 import { AuthModule } from '@auth0/auth0-angular';
 import { ProfileComponent } from './components/profile/profile.component';
+import { AuthButtonComponent} from './components/profile/authButtonComponent/authButton.component'
 
 
 registerLocaleData(uk);
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent],
+  declarations: [AppComponent, ProfileComponent, AuthButtonComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

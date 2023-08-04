@@ -9,10 +9,10 @@ import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { AccountRoutingModule } from './account-routing.module';
-import { AuthButtonComponent } from './login/authButtonComponent/authButton.component';
+
 
 @NgModule({
-  declarations: [LoginComponent, AuthButtonComponent],
+  declarations: [LoginComponent],
   imports: [
     CommonModule,
     NzFormModule,
@@ -22,6 +22,6 @@ import { AuthButtonComponent } from './login/authButtonComponent/authButton.comp
     ReactiveFormsModule,
     AccountRoutingModule,
   ],
-  exports: [LoginComponent,  AuthButtonComponent],
+  exports: [LoginComponent],
 })
 export class AccountModule {}
