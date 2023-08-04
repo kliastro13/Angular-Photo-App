@@ -7,14 +7,14 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
 import { LoginComponent } from './login/login.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SignUpComponent } from './sign-up/sign-up.component';
+
 import { AccountRoutingModule } from './account-routing.module';
 import { AuthButtonComponent } from './login/authButtonComponent/authButton.component';
 import { UserProfileComponent } from './login/profile/profile.component';
 
 
 @NgModule({
-  declarations: [LoginComponent, SignUpComponent, AuthButtonComponent, UserProfileComponent],
+  declarations: [LoginComponent, AuthButtonComponent, UserProfileComponent],
   imports: [
     CommonModule,
     NzFormModule,
@@ -24,6 +24,6 @@ import { UserProfileComponent } from './login/profile/profile.component';
     ReactiveFormsModule,
     AccountRoutingModule,
   ],
-  exports: [LoginComponent, SignUpComponent, AuthButtonComponent, UserProfileComponent],
+  exports: [LoginComponent,  AuthButtonComponent, UserProfileComponent],
 })
 export class AccountModule {}
