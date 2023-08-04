@@ -15,7 +15,8 @@ import { IconsProviderModule } from './icons-provider.module';
 import { AccountModule } from './components/account/account.module';
 import { AuthModule } from '@auth0/auth0-angular';
 import { ProfileComponent } from './components/profile/profile.component';
-import { AuthButtonComponent} from './components/profile/authButtonComponent/authButton.component'
+import { AuthButtonComponent} from './components/profile/authButtonComponent/authButton.component';
+import { WelcomeModule } from './components/welcome/welcome.module';
 
 
 registerLocaleData(uk);
@@ -31,6 +32,7 @@ registerLocaleData(uk);
     IconsProviderModule,
     ReactiveFormsModule,
     AccountModule,
+    WelcomeModule,
     AuthModule.forRoot({
       domain: 'dev-angular-photo-app.eu.auth0.com',
       clientId: 'OMqDrzY1bpDovT6zgEgSScgiiRnfoo57',
