@@ -13,16 +13,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IconsProviderModule } from './icons-provider.module';
 
 import { AccountModule } from './components/account/account.module';
-
 import { AuthModule } from '@auth0/auth0-angular';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 registerLocaleData(uk);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ProfileComponent],
   imports: [
-    BrowserModule,    
+    BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
