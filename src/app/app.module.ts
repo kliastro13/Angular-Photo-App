@@ -17,12 +17,13 @@ import { AuthModule } from '@auth0/auth0-angular';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AuthButtonComponent} from './components/profile/authButtonComponent/authButton.component';
 import { WelcomeModule } from './components/welcome/welcome.module';
+import { MainPageComponent } from './components/main-page/main-page.component';
 
 
 registerLocaleData(uk);
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, AuthButtonComponent],
+  declarations: [AppComponent, ProfileComponent, AuthButtonComponent, MainPageComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
