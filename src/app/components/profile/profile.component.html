@@ -1,0 +1,11 @@
+<div
+class="rounded-full font-bold bg-sky-500 w-32 h-32 flex items-center justify-center text-white text-5xl"
+>
+APA
+</div>
+<app-auth-button></app-auth-button>
+<p>User profile working!</p>
+<ul *ngIf="auth.user$ | async as user">
+  <li>{{ user.name }}</li>
+  <li>{{ user.email }}</li>
+</ul>

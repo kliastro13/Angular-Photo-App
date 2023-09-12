@@ -11,7 +11,6 @@ import {
 import { Observable } from 'rxjs';
 import { tap, take } from 'rxjs/operators';
 import { AuthService } from '@auth0/auth0-angular';
-import { homepage } from 'src/app/data/const';
 
 @Injectable({
   providedIn: 'root',
@@ -43,7 +42,7 @@ export class AuthGuard implements CanActivate, CanLoad, CanActivateChild {
       tap((loggedIn) => {
         if (!loggedIn) {
           this.auth.loginWithRedirect({
-            appState: { target: '/welcome' },
+            appState: { target: '/main-page' },
           });
         }
       })
