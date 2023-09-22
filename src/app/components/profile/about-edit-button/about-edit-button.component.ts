@@ -6,13 +6,13 @@ import { DOCUMENT } from '@angular/common';
   selector: 'app-about-edit-button',
   template: `
   <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-    <button (click)="auth.logout({ logoutParams: { returnTo: document.location.origin } })">
+    <button>
       Edit
     </button>
   </ng-container>
 
   <ng-template #loggedOut>
-    <button (click)="auth.loginWithRedirect()">About</button>
+    <button>About</button>
   </ng-template>
 `,
   styleUrls: []
