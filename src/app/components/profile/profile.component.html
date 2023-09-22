@@ -1,11 +1,29 @@
-<div
-class="rounded-full font-bold bg-sky-500 w-32 h-32 flex items-center justify-center text-white text-5xl"
->
-APA
+<div class="bg-red-200 w-full basis-5/6 flex flex-row justify-around items-center">
+  <app-avatar
+  class="rounded-full font-bold bg-amber-500 w-32 h-32 flex items-center justify-center text-white"
+  *ngIf="auth.isAuthenticated$ | async"
+  ></app-avatar>
+
+
+  <app-about-edit-button class="rounded-full font-bold bg-sky-500 text-white w-24 p-2 text-center"></app-about-edit-button>
+
+  <div
+  class="rounded-full font-bold bg-sky-500 w-32 h-32 flex items-center justify-center text-white text-5xl"
+  >
+  APA
+  </div>
+
+  <app-auth-button class="rounded-full font-bold bg-sky-500 text-white w-24 p-2 text-center"></app-auth-button>
+
+  <app-new-photo
+  class="rounded-full font-bold bg-amber-500 w-32 h-32 flex items-center justify-center text-white"
+  *ngIf="auth.isAuthenticated$ | async"></app-new-photo>
 </div>
-<app-auth-button></app-auth-button>
-<p>User profile working!</p>
-<ul *ngIf="auth.user$ | async as user">
+
+<app-categories class="rounded-full bg-green-700 text-white w-11/12 flex flex-row justify-around items-center h-full basis-1/6"
+*ngIf="auth.isAuthenticated$ | async"
+></app-categories>
+<!-- <ul *ngIf="auth.user$ | async as user">
   <li>{{ user.name }}</li>
   <li>{{ user.email }}</li>
-</ul>
+</ul> -->
