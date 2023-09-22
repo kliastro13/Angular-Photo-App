@@ -12,7 +12,12 @@ class="rounded-full font-bold bg-sky-500 w-32 h-32 flex items-center justify-cen
 >
 APA
 </div>
+
 <app-auth-button class="rounded-full font-bold bg-sky-500 text-white w-24 p-2 text-center"></app-auth-button>
+
+<app-new-photo
+class="rounded-full font-bold bg-amber-500 w-32 h-32 flex items-center justify-center text-white"
+*ngIf="auth.isAuthenticated$ | async"></app-new-photo>
 <!-- <ul *ngIf="auth.user$ | async as user">
   <li>{{ user.name }}</li>
   <li>{{ user.email }}</li>
