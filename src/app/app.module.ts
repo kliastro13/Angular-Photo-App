@@ -19,8 +19,8 @@ import { WelcomeModule } from './components/welcome/welcome.module';
 import { MainPageComponent } from './components/main-page/main-page.component';
 import { AboutEditButtonComponent } from './components/profile/about-edit-button/about-edit-button.component';
 import { AvatarComponent } from './components/profile/avatar/avatar.component';
-import { NewPhotoComponent } from './components/profile/new-photo/new-photo.component';
-import { CategoriesComponent } from './components/profile/categories/categories.component';
+import { NewPhotoComponent } from './components/main-page/new-photo/new-photo.component';
+import { CategoriesComponent } from './components/main-page/categories/categories.component';
 
 
 registerLocaleData(uk);

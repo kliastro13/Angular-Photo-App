@@ -1,1 +1,10 @@
+<app-categories class="rounded-full bg-green-700 text-white w-11/12 flex flex-row justify-around items-center h-full basis-1/6"
+*ngIf="auth.isAuthenticated$ | async">
+</app-categories>
+
 <p>main-page works!</p>
+
+<app-new-photo
+  class="rounded-full font-bold bg-amber-500 w-32 h-32 flex items-center justify-center text-white"
+  *ngIf="auth.isAuthenticated$ | async">
+</app-new-photo>
