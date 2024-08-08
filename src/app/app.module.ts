@@ -21,12 +21,13 @@ import { AboutEditButtonComponent } from './components/profile/about-edit-button
 import { AvatarComponent } from './components/profile/avatar/avatar.component';
 import { NewPhotoComponent } from './components/main-page/new-photo/new-photo.component';
 import { CategoriesComponent } from './components/main-page/categories/categories.component';
+import { UserInfoComponent } from './components/profile/user-info/user-info.component';
 
 
 registerLocaleData(uk);
 
 @NgModule({
-  declarations: [AppComponent, ProfileComponent, AuthButtonComponent, MainPageComponent, AboutEditButtonComponent, AvatarComponent, NewPhotoComponent, CategoriesComponent],
+  declarations: [AppComponent, ProfileComponent, AuthButtonComponent, MainPageComponent, AboutEditButtonComponent, AvatarComponent, NewPhotoComponent, CategoriesComponent, UserInfoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
